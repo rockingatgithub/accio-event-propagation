@@ -1,0 +1,18 @@
+div, p {
+    border: 1px solid black;
+}
+
+div {
+    height: 100px;
+    width: 100px;
+}
+
+p {
+    height: 50px;
+    width: 50px;
+}
+
+.outer {
+    height: 200px;
+    width: 200px;
+}

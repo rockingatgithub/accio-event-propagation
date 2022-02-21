@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- event propagation  -->
+
+    <h1>Event propagation</h1>
+
+
+    <div class="outer" onclick="alert('outer')">
+        <div onclick="alert('div')">
+            <p onclick="alert('p')" >  </p>
+        </div>
+    </div>
+
+    <!-- stop event propagation -->
+
+    <h1>Stopping event propagation</h1>
+
+
+    <div class="outer" onclick="alert('outer')">
+        <div onclick="alert('div')">
+            <p onclick="paraClickHandler(event)" >  </p>
+        </div>
+    </div>
+
+    <!-- event capturing -->
+
+    <h1>Capturing events</h1>
+
+    <div class="outer" id="outer-div">
+        <div>
+            <p>  </p>
+        </div>
+    </div>
+
+    
+
+    <script src="script.js" > 
+    </script>
+
+    <script>
+           function paraClickHandler (event) {
+            event.stopPropagation();    // stop propagation function stops the event to flow up the DOM.
+            alert('p');
+        }
+
+        let outerDiv = document.getElementById('outer-div');
+        outerDiv.addEventListener('click', 
+            function (event) { 
+
+                console.log(">>>>>", event.target)
+
+                alert("element clicked");  
+            }, 
+            {capture: true}
+        );
+
+
+    </script>
+</body>
+</html>
